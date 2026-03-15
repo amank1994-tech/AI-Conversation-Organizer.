@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Privacy Notice — AI Conversation Organizer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0f0e0c; --ink-2:#3a3830; --ink-3:#7a7670;
+  --paper:#faf9f6; --paper-2:#f2f0eb; --paper-3:#e8e4dc;
+  --green:#16a34a; --green-bg:#f0fdf4; --green-border:#bbf7d0;
+  --amber:#d97706; --amber-bg:#fffbeb; --amber-border:#fde68a;
+  --red:#dc2626; --red-bg:#fef2f2; --red-border:#fecaca;
+  --blue:#2563eb; --blue-bg:#eff6ff; --blue-border:#bfdbfe;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{font-size:15px;-webkit-font-smoothing:antialiased}
+body{
+  font-family:var(--sans);color:var(--ink);background:var(--paper);
+  max-width:760px;margin:0 auto;padding:48px 32px 80px;
+}
+/* ── Header ── */
+.header{margin-bottom:48px;padding-bottom:32px;border-bottom:2px solid var(--paper-3)}
+.header-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--green-bg);border:1px solid var(--green-border);
+  color:var(--green);font-size:11px;font-weight:600;
+  padding:4px 12px;border-radius:20px;margin-bottom:20px;
+  text-transform:uppercase;letter-spacing:.5px;
+}
+h1{font-family:var(--serif);font-size:40px;letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+h1 em{font-style:italic;color:var(--ink-3)}
+.header-meta{font-size:13px;color:var(--ink-3);font-family:var(--mono)}
+/* ── Verdict box ── */
+.verdict{
+  background:var(--green-bg);border:2px solid var(--green-border);
+  border-radius:16px;padding:28px 32px;margin-bottom:40px;
+}
+.verdict-title{
+  font-size:18px;font-weight:600;color:var(--green);margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.verdict-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.verdict-list li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:14px;color:#166534;line-height:1.55;
+}
+.verdict-list li svg{flex-shrink:0;margin-top:2px}
+/* ── Important note ── */
+.note{
+  border-radius:12px;padding:20px 24px;margin-bottom:32px;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.note-icon{flex-shrink:0;margin-top:2px}
+.note-title{font-size:13px;font-weight:700;margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.note-body{font-size:13.5px;line-height:1.65}
+.note.amber{background:var(--amber-bg);border:1.5px solid var(--amber-border)}
+.note.amber .note-title{color:var(--amber)}
+.note.amber .note-body{color:#92400e}
+.note.blue{background:var(--blue-bg);border:1.5px solid var(--blue-border)}
+.note.blue .note-title{color:var(--blue)}
+.note.blue .note-body{color:#1e40af}
+/* ── Sections ── */
+h2{font-family:var(--serif);font-size:24px;letter-spacing:-.4px;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--paper-3)}
+h2:first-of-type{border-top:none}
+p{font-size:14.5px;line-height:1.75;color:var(--ink-2);margin-bottom:14px;font-weight:300}
+strong{font-weight:600;color:var(--ink)}
+/* ── Data table ── */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:13.5px}
+.data-table th{
+  background:var(--paper-2);padding:10px 14px;text-align:left;
+  font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--ink-3);border-bottom:2px solid var(--paper-3);
+}
+.data-table td{
+  padding:11px 14px;border-bottom:1px solid var(--paper-3);
+  color:var(--ink-2);line-height:1.5;vertical-align:top;
+}
+.data-table tr:last-child td{border-bottom:none}
+.pill{
+  display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;
+}
+.pill.yes{background:var(--green-bg);color:var(--green)}
+.pill.no{background:var(--red-bg);color:var(--red)}
+.pill.local{background:var(--blue-bg);color:var(--blue)}
+/* ── Consent box ── */
+.consent-box{
+  background:var(--ink);color:#fff;border-radius:16px;
+  padding:32px;margin:40px 0;
+}
+.consent-title{
+  font-family:var(--serif);font-size:22px;letter-spacing:-.3px;
+  margin-bottom:12px;
+}
+.consent-title em{font-style:italic;color:rgba(255,255,255,.5)}
+.consent-body{font-size:13.5px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:24px;font-weight:300}
+.consent-items{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.consent-item{
+  display:flex;align-items:flex-start;gap:10px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;padding:12px 16px;
+  font-size:13px;color:rgba(255,255,255,.8);line-height:1.5;
+}
+.consent-item svg{flex-shrink:0;margin-top:2px}
+.consent-buttons{display:flex;gap:10px;flex-wrap:wrap}
+.btn-accept{
+  background:#16a34a;color:#fff;border:none;
+  font-family:var(--sans);font-size:14px;font-weight:600;
+  padding:11px 24px;border-radius:8px;cursor:pointer;
+  transition:background .2s;
+}
+.btn-accept:hover{background:#15803d}
+.btn-decline{
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);
+  font-family:var(--sans);font-size:14px;font-weight:500;
+  padding:11px 24px;border-radius:8px;cursor:pointer;
+  transition:all .2s;
+}
+.btn-decline:hover{background:rgba(255,255,255,.14)}
+/* ── Flow diagram ── */
+.flow{
+  background:#fff;border:1.5px solid var(--paper-3);border-radius:14px;
+  padding:24px;margin:20px 0 28px;
+}
+.flow-title{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:1px;color:var(--ink-3);margin-bottom:18px}
+.flow-step{display:flex;align-items:flex-start;gap:12px;padding:10px 0}
+.flow-step:not(:last-child){border-bottom:1px dashed var(--paper-3)}
+.flow-num{
+  width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:11px;flex-shrink:0;
+}
+.flow-step-body{flex:1}
+.flow-step-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.flow-step-detail{font-size:12.5px;color:var(--ink-3);line-height:1.5}
+.flow-discard{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--red-bg);border:1px solid var(--red-border);
+  color:var(--red);font-size:11px;font-weight:600;
+  padding:2px 8px;border-radius:4px;margin-top:5px;
+}
+.flow-keep{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--green-bg);border:1px solid var(--green-border);
+  color:var(--green);font-size:11px;font-weight:600;
+  padding:2px 8px;border-radius:4px;margin-top:5px;
+}
+/* ── Footer ── */
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--paper-3);font-size:12.5px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Privacy Notice · Version 2.1
+  </div>
+  <h1>What this extension does<br/>with <em>your data</em></h1>
+  <div class="header-meta">AI Conversation Organizer · Last updated March 2026</div>
+</div>
+
+<!-- Compliance verdict -->
+<div class="verdict">
+  <div class="verdict-title">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    This extension does not violate your privacy — here is why
+  </div>
+  <ul class="verdict-list">
+    <li>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span><strong>Zero data ever leaves your device.</strong> The extension makes no network requests of any kind. Nothing is sent to any server, ever. You can verify this yourself in Chrome DevTools → Network tab.</span>
+    </li>
+    <li>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span><strong>Your message text is never stored.</strong> The extension reads your messages locally to detect topic categories (like "Health" or "Career"), then immediately discards the text. Only the category label — a single word — is saved.</span>
+    </li>
+    <li>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span><strong>AI responses are never read.</strong> The extension only looks at messages you wrote (marked by ChatGPT as <code style="background:var(--green-bg);padding:1px 5px;border-radius:3px;font-size:11px">role="user"</code>). It never touches any AI-generated text.</span>
+    </li>
+    <li>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span><strong>One permission. That's all.</strong> The extension only requests <code style="background:var(--green-bg);padding:1px 5px;border-radius:3px;font-size:11px">storage</code> — to save your conversation list on your own device. No tabs, no history, no clipboard, no identity.</span>
+    </li>
+    <li>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span><strong>You can delete everything anytime.</strong> Individual conversations or all data can be wiped from inside the extension. Uninstalling removes everything permanently.</span>
+    </li>
+  </ul>
+</div>
+
+<!-- Important honest disclosure -->
+<div class="note amber">
+  <svg class="note-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  <div>
+    <div class="note-title">Important — what changed in version 2.1</div>
+    <div class="note-body">
+      Earlier versions only read the conversation title (from the browser tab). Version 2.1 added <strong>multi-topic detection</strong>, which means the extension now also reads the text of messages <em>you</em> write inside a conversation. It does this entirely on your device, instantly discards the text, and stores only a category label like "Health" or "Career". No text you have ever typed is retained or transmitted. This notice explains exactly how that works.
+    </div>
+  </div>
+</div>
+
+<h2>Exactly what is read and what is stored</h2>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Data type</th>
+      <th>Is it read?</th>
+      <th>Is it stored?</th>
+      <th>Where?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Conversation title</strong><br/><span style="font-size:12px;color:var(--ink-3)">The text in your browser tab</span></td>
+      <td><span class="pill yes">Yes</span></td>
+      <td><span class="pill yes">Yes</span></td>
+      <td><span class="pill local">Your device only</span></td>
+    </tr>
+    <tr>
+      <td><strong>Conversation URL</strong><br/><span style="font-size:12px;color:var(--ink-3)">The chatgpt.com link</span></td>
+      <td><span class="pill yes">Yes</span></td>
+      <td><span class="pill yes">Yes</span></td>
+      <td><span class="pill local">Your device only</span></td>
+    </tr>
+    <tr>
+      <td><strong>Timestamp</strong><br/><span style="font-size:12px;color:var(--ink-3)">Date and time you visited</span></td>
+      <td><span class="pill yes">Yes</span></td>
+      <td><span class="pill yes">Yes</span></td>
+      <td><span class="pill local">Your device only</span></td>
+    </tr>
+    <tr>
+      <td><strong>Topic categories</strong><br/><span style="font-size:12px;color:var(--ink-3)">e.g. "Health", "Career", "Finance"</span></td>
+      <td><span class="pill yes">Derived</span></td>
+      <td><span class="pill yes">Yes</span></td>
+      <td><span class="pill local">Your device only</span></td>
+    </tr>
+    <tr>
+      <td><strong>Your message text</strong><br/><span style="font-size:12px;color:var(--ink-3)">What you typed to ChatGPT</span></td>
+      <td><span class="pill yes">Read locally</span></td>
+      <td><span class="pill no">Never stored</span></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>AI response text</strong><br/><span style="font-size:12px;color:var(--ink-3)">What ChatGPT replied</span></td>
+      <td><span class="pill no">Never read</span></td>
+      <td><span class="pill no">Never stored</span></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>Your ChatGPT account</strong><br/><span style="font-size:12px;color:var(--ink-3)">Login, email, identity</span></td>
+      <td><span class="pill no">Never read</span></td>
+      <td><span class="pill no">Never stored</span></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>Other websites</strong><br/><span style="font-size:12px;color:var(--ink-3)">Any site outside chatgpt.com</span></td>
+      <td><span class="pill no">No access</span></td>
+      <td><span class="pill no">Never stored</span></td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>How topic detection works — step by step</h2>
+
+<p>When you are in a ChatGPT conversation, here is the exact sequence of what happens inside the extension:</p>
+
+<div class="flow">
+  <div class="flow-title">Data flow — local processing only</div>
+
+  <div class="flow-step">
+    <div class="flow-num">1</div>
+    <div class="flow-step-body">
+      <div class="flow-step-title">You send a message to ChatGPT</div>
+      <div class="flow-step-detail">ChatGPT renders your message in the page DOM with the attribute <code>data-message-author-role="user"</code>.</div>
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="flow-num">2</div>
+    <div class="flow-step-body">
+      <div class="flow-step-title">The extension detects a new message was added to the page</div>
+      <div class="flow-step-detail">A MutationObserver notices that a new element appeared in the conversation. It waits 1.2 seconds (debounce) before doing anything, so it does not fire during streaming.</div>
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="flow-num">3</div>
+    <div class="flow-step-body">
+      <div class="flow-step-title">Your message text is read from the DOM</div>
+      <div class="flow-step-detail">The text of every user message in the conversation is read into a local JavaScript variable. This happens entirely inside your browser — nothing is sent anywhere.</div>
+      <div><span class="flow-discard">⚠ Text exists in memory at this point</span></div>
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="flow-num">4</div>
+    <div class="flow-step-body">
+      <div class="flow-step-title">Keyword matching runs against a fixed list</div>
+      <div class="flow-step-detail">The text is lowercased and checked against a hardcoded list of category keywords — e.g. if the text contains "skincare" or "acne", the label "Health" is returned. If it contains "resume" or "interview", the label "Career" is returned. The full list is visible in the source code.</div>
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="flow-num">5</div>
+    <div class="flow-step-body">
+      <div class="flow-step-title">The text variable is discarded</div>
+      <div class="flow-step-detail">The function returns only the matched label names (e.g. <code>["Health", "Career"]</code>). The text string goes out of scope and is garbage-collected. It is never written to storage, never passed to another function, and never transmitted.</div>
+      <div><span class="flow-discard">Text discarded immediately</span></div>
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="flow-num">6</div>
+    <div class="flow-step-body">
+      <div class="flow-step-title">Only the category labels are saved</div>
+      <div class="flow-step-detail">The label strings (e.g. <code>"Health"</code>, <code>"Career"</code>) are merged into the conversation record in <code>chrome.storage.local</code> on your device. This is the only thing written to storage from this entire process.</div>
+      <div><span class="flow-keep">✓ Only label names stored</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="note blue">
+  <svg class="note-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <div>
+    <div class="note-title">You can verify this yourself</div>
+    <div class="note-body">
+      Open Chrome DevTools (F12) while the extension is active. Go to the <strong>Network tab</strong> — you will see zero requests made by the extension. Go to <strong>Application → Storage → Local Storage</strong> — you will see only the category label strings, never any message text. The full source code is available for inspection in the extension folder.
+    </div>
+  </div>
+</div>
+
+<h2>Your rights and controls</h2>
+
+<p><strong>Delete individual conversations:</strong> Click the × button on any conversation card. It is removed from local storage immediately.</p>
+
+<p><strong>Delete everything:</strong> Click the trash icon in the top-right of the extension and confirm. All data is permanently erased from your device.</p>
+
+<p><strong>Uninstall the extension:</strong> Go to <code>chrome://extensions</code>, find AI Conversation Organizer, and click Remove. Chrome deletes all associated local storage when an extension is uninstalled.</p>
+
+<p><strong>See exactly what is stored:</strong> Open DevTools → Application → Local Storage → <code>chrome-extension://[id]</code> → key <code>aco_conversations</code>. You will see the raw JSON with every field — confirming that no message text is present.</p>
+
+<h2>Third-party sharing</h2>
+
+<p>The Share feature — when you click the share icon on a conversation card — is entirely optional and user-initiated. If you choose to share, the conversation URL is passed to the standard share page of whichever platform you select (Twitter/X, LinkedIn, or WhatsApp). <strong>This only happens when you explicitly click a share button.</strong> Nothing is shared automatically.</p>
+
+<p>No data is shared with the developer of this extension, with Anthropic, with OpenAI, or with any other third party under any circumstances.</p>
+
+<h2>Compliance with privacy laws</h2>
+
+<p><strong>GDPR (EU/UK):</strong> Under GDPR, "processing" personal data requires a legal basis. The processing here — local keyword detection of user-authored messages — is performed at the user's explicit request (by installing and using the extension), produces no identifiable output, and involves no data transfer outside the user's own device. This falls under the "legitimate interests" and "performance of a contract" bases. No data leaves the EU or the user's device.</p>
+
+<p><strong>CCPA (California):</strong> The extension does not "sell" or "share" personal information. It does not collect data for advertising. The user's information is used solely to provide the feature they requested.</p>
+
+<p><strong>PIPEDA (Canada) / PDPA (various):</strong> Similar principles apply. All processing is local, user-initiated, and produces no persistent personal data beyond what the user can see and delete at any time.</p>
+
+<p><strong>Note:</strong> Because all data is stored locally on the user's device and no data is transmitted, the developer of this extension is not a "data controller" or "data processor" in the traditional sense under most privacy frameworks. The user is effectively processing their own data on their own device.</p>
+
+<h2>Children's privacy</h2>
+<p>This extension is not directed at children under 13. It does not knowingly process data from children. If you are under 13, please do not install this extension.</p>
+
+<h2>Changes to this notice</h2>
+<p>If the extension adds any new type of data access or storage in a future update, this notice will be updated and the version number will change. The changelog in the Chrome Web Store will describe what changed and why.</p>
+
+<!-- Consent box -->
+<div class="consent-box" id="consentBox">
+  <div class="consent-title">Before you use this extension,<br/><em>please confirm you understand</em></div>
+  <div class="consent-body">By clicking "I understand and agree", you confirm that you have read and understood this privacy notice, and that you consent to the local processing described above.</div>
+  <div class="consent-items">
+    <div class="consent-item">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Your message text is read locally on your device to detect topic categories, then immediately discarded
+    </div>
+    <div class="consent-item">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Only category labels (like "Health" or "Career") are stored — never the text itself
+    </div>
+    <div class="consent-item">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      All stored data stays on your device and can be deleted by you at any time
+    </div>
+    <div class="consent-item">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Zero data is transmitted to any server or third party
+    </div>
+  </div>
+  <div class="consent-buttons">
+    <button class="btn-accept" onclick="handleAccept()">I understand and agree</button>
+    <button class="btn-decline" onclick="handleDecline()">I do not agree — do not install</button>
+  </div>
+</div>
+
+<footer>
+  <p>AI Conversation Organizer · Privacy Notice v2.1 · March 2026</p>
+  <p style="margin-top:6px">For questions: use the Support link on the Chrome Web Store listing.</p>
+</footer>
+
+<script>
+function handleAccept() {
+  const box = document.getElementById('consentBox');
+  box.style.background = '#15803d';
+  box.innerHTML = `
+    <div style="display:flex;align-items:center;gap:14px">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div>
+        <div style="font-family:'Instrument Serif',serif;font-size:20px;color:#fff;margin-bottom:4px">Thank you — all clear</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);font-weight:300">You can now install the extension with confidence. You can delete all data at any time from inside the extension.</div>
+      </div>
+    </div>`;
+}
+function handleDecline() {
+  const box = document.getElementById('consentBox');
+  box.style.background = '#7f1d1d';
+  box.innerHTML = `
+    <div style="display:flex;align-items:center;gap:14px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <div>
+        <div style="font-family:'Instrument Serif',serif;font-size:20px;color:#fff;margin-bottom:4px">Understood — please do not install</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);font-weight:300">If you have concerns or questions about how the extension works, please reach out via the Chrome Web Store listing before installing.</div>
+      </div>
+    </div>`;
+}
+</script>
+
+</body>
+</html>
